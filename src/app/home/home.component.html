@@ -3,21 +3,23 @@
 <h2 class="mx-48 flex items-center "><span class="text-blue-600 dark:text-blue-500">Add Products</span></h2>&nbsp;
 <div class="flex">
 <label class="flex  items-center ms-2" >
-Product Name<input class="bg-gray-50 border ms-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+Product Name
+<input class="bg-gray-50 border ms-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
  formControlName="itemName" 
  type="text" 
  [ngClass]="{ 'border-red-500': myForm.get('itemName')?.invalid && myForm.get('itemName')?.touched }"
+ placeholder="Enter a item name"
  >
 
 
 </label>
-<div *ngIf="myForm.get('itemName')?.invalid && myForm.get('itemName')?.touched" class="text-red-500">
-  Please enter a product name
-  </div>
 <div >
-<button type="button" (click)="onAddItems()"class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">ADD</button>
+  <button type="button" (click)="onAddItems()"class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">ADD</button>
 </div>
 </div>
+<span *ngIf="myForm.get('itemName')?.touched" class="text-red-500 ms-32">
+  Please enter a product name
+</span>
 <div formArrayName="subCategoryName">
   <div class="mt-5 container mx-auto flex ms-24" *ngFor="let item of itemControls;let i=index">
     <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"[formControlName]="i"/>
