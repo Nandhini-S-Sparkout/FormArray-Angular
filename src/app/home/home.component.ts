@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -6,20 +7,24 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent {
 
 myForm!:FormGroup;
-constructor()
-{
 
-}
+public getJsonValue:any;
+public postJsonValue:any;
+constructor(){}
 
 ngOnInit(){
+ 
   this.myForm=new FormGroup({
     'itemName':new FormControl(''),
     'subCategoryName':new FormArray([])
   })
 }
+
+
 
 get itemControls()
 {

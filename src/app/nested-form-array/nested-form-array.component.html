@@ -1,0 +1,83 @@
+<div class="container my-5 col-md-6 rounded-6">
+  <h2 class="mx-48 flex items-center">
+    <span class="text-blue-600 dark:text-blue-500">Nested Form Array</span>
+  </h2>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="flex">
+      <div *ngFor="let item of subCategoryName.controls; let e = index">
+        <div
+          [formGroupName]="e"
+          style="border: 1px solid blue; padding: 10px; width: 600px; margin: 5px;"
+        >
+          Main item Name
+          <input
+            type="text"
+            class="bg-gray-50 border ms-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            id="mainItemName"
+            placeholder="Main Item Name"
+          />
+          Sub Item Name
+          <input
+            type="text"
+            class="bg-gray-50 border ms-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            id="subItemName"
+            placeholder="Sub Item Name"
+          />
+          <button (click)="removeItem(e)" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Remove</button>
+          <div formArrayName="subNewItem">
+            <div
+              *ngFor="let subItem of subNewItemList(e).controls; let si = index"
+            >
+              <div [formGroupName]="si">
+                New Item Name
+                <input
+                  type="text"
+                  class="bg-gray-50 border ms-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                 id="newItemName"
+                  placeholder="New Item Name"
+                />
+                Sub New Category Name
+                <input
+                  type="text"
+                  class="bg-gray-50 border ms-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                 id="subNewCategoryName"
+                  placeholder="Sub New Category Name"
+                />
+                <button
+                  type="button"
+                  (click)="removeSubNewItemList(e, si)"
+                  class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                >
+                  Remove New Item
+                </button>
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            (click)="addSubNewItemList(e)"
+            class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+          >
+            Add Sub New Item
+          </button>
+        </div>
+      </div>
+    </div>
+    
+  
+               <input
+                  type="text"
+                  class="bg-gray-50 border ms-2 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                 id="subNewCategoryName"
+                 formControlName="subCategoryName"
+                  placeholder="Sub New Category Name"
+                />
+                <button type="button" (click)="addItem()" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                  Add Item
+                </button>
+                <span *ngIf="myForm.get('subNewCategoryName')?.touched" class="text-red-500 ms-32">
+                  Please enter a product name
+                </span>
+  </form>
+  <pre>{{ this.myForm.value | json }}</pre>
+</div>

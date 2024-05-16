@@ -6,19 +6,22 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
 import { HomeComponent } from './home/home.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NestedFormArrayComponent } from './nested-form-array/nested-form-array.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    
-    HomeComponent
+    HomeComponent,
+    NestedFormArrayComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
