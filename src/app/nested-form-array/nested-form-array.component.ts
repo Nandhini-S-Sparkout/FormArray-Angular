@@ -35,19 +35,7 @@ addItem() {
   this.subCategoryName.push(this.newItem());
   }
 }
-// addItem(){
-// const itemsName=this.myForm.get('subNewCategoryName')?.value.trim();
-//      if(itemsName !== '')
-//     {
-//       const itemNameControl=new FormControl(itemsName,Validators.required);
-//       (this.myForm.get('subCategoryName') as FormArray).push(itemNameControl);
-//       console.log(itemNameControl);
-      
-//       this.myForm.get('subNewCategoryName')?.setValue('');
-//     }
-    
 
-//   }
 removeItem(index: number) {
   this.subCategoryName.removeAt(index);
 }
